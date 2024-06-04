@@ -1,6 +1,6 @@
 # b-spline-surface-fit
 Application for the fitting of B-spline surfaces to point clouds.
-This Python project is the output of my masters thesis and work done as a reasearch assistant in the Marine and Arctic Technology research team. The motivation was to provide an easy and accesible programm to characterize distortion shapes of welded thin-deck ship panels to enable further investigations on their strength capabilities. The thesis can be accessed here: 
+This Python project is the output of my masters thesis and work done as a reasearch assistant in the Marine and Arctic Technology research team. The motivation was to provide an easy and accesible programm to characterize distortion shapes of welded thin-deck ship panels to enable further investigations on their strength capabilities. The thesis can be accessed [here](https://libguides.aalto.fi/c.php?g=653791&p=5137711). 
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ Dependency check is implemented in the beginning of each script, with the option
 * [numpy](https://numpy.org/): Fundamental package for scientific computing in Python.
 * [pyMeshLab](https://github.com/cnr-isti-vclab/meshlab): pyMeshLab is a Python library that enables users to write scripts using the various functions available in Meshlab.
 
-Furthermore, the installation of [FreeCAD v0.21](https://www.freecad.org/) on the local machine is required. The local installation path needs to be added to the script `surface_fitting.py`.
+Furthermore, the installation of [FreeCAD v0.21](https://www.freecad.org/) on the local machine is required. The local installation path needs to be added to the script `surface_fitting.py` in the following line. Replace USER with the user on the local machine.
 ```
   # insert path here that goes to the installation of FreeCAD
     FREECADPATH = r"C:\\Users\\USER\\AppData\\Local\\Programs\\FreeCAD 0.21\\bin"
