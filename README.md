@@ -19,7 +19,7 @@ Dependency check is implemented in the beginning of each script, with the option
 * [pyMeshLab](https://github.com/cnr-isti-vclab/meshlab): pyMeshLab is a Python library that enables users to write scripts using the various functions available in Meshlab.
 
 Furthermore, the installation of [FreeCAD v0.21](https://www.freecad.org/) on the local machine is required. The local installation path needs to be added to the script `surface_fitting.py` in the following line. Replace USER with the user on the local machine.
-```
+```python
   # insert path here that goes to the installation of FreeCAD
     FREECADPATH = r"C:\\Users\\USER\\AppData\\Local\\Programs\\FreeCAD 0.21\\bin"
     FREECADLIBPATH = r"C:\\Users\\USER\\AppData\\Local\\Programs\\FreeCAD 0.21\\lib"
