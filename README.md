@@ -14,7 +14,7 @@ This Python project is the output of my masters thesis and work done as a reasea
 The scripts can be used in two ways; either as standalone scripts, where the raw functions are provided or as an application to enable easy usability.
 ### Dependencies
 Dependency check is implemented in the beginning of each script, with the option to install during execution. Alternatively, these libraries can be easily installed through `pip install`.
-* [open3D](https://www.open3d.org/): Library for 3D data processing. Used for voxel downsampling in this project.
+* [open3D](https://www.open3d.org/): Library for 3D data processing. Used for voxel downsampling and visualization in this project.
 * [numpy](https://numpy.org/): Fundamental package for scientific computing in Python.
 * [pyMeshLab](https://github.com/cnr-isti-vclab/meshlab): pyMeshLab is a Python library that enables users to write scripts using the various functions available in Meshlab.
 
