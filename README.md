@@ -27,6 +27,10 @@ Furthermore, the installation of [FreeCAD v0.21](https://www.freecad.org/) on th
 
 
 ## Usage
+The package can be used either by running `ui2_app.py` which gives an GUI for the user to setup the surface reconstruction process. The second option is to utilize the scripts `crop_geometry.py` `voxel_downsampling.py` and `surface_fitting.py` to build an own application.
+Starting point for the reconstruction is a planar type point cloud in `.ply` format.
+
+
 
 ## Contributing
 
