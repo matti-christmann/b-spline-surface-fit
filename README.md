@@ -27,9 +27,27 @@ Furthermore, the installation of [FreeCAD v0.21](https://www.freecad.org/) on th
 
 
 ## Usage
-The package can be used either by running `ui2_app.py` which gives an GUI for the user to setup the surface reconstruction process. The second option is to utilize the scripts `crop_geometry.py` `voxel_downsampling.py` and `surface_fitting.py` to build an own application.
-Starting point for the reconstruction is a planar type point cloud in `.ply` format.
+The package can be used either by running `ui2_app.py` which gives an GUI for the user to setup the surface reconstruction process. The second option is to utilize the scripts `crop_geometry.py` `voxel_downsampling.py` and `surface_fitting.py` to build an own application
+1. **Run the Application:**
+   ```sh
+   python ui2_app.py
 
+ <img src="/pictures/GUI.jpg?raw=true" alt="GUI Screenshot" title="Optional Title" width="350"/>
+   
+2. **Follow the GUI instructions:**
+   Starting point for the reconstruction is a planar type point cloud in `.ply` format.
+   Load `.ply` file.
+   Set up parameters for the surface reconstruction process. Parameters are strongly case dependant, recommendations for plate fields (based on investigations done in the thesis) are:
+   ```sh
+    voxel size = 2
+    UDegree = 3
+    VDegree = 3
+    NbUPoles = 15
+    NbVPoles = 15
+    Iterations = 3 
+
+3. **Perform reconstruction and error analysis:**
+   The reconstructed surface will be saved as `.step` format in the specified output folder. The application also gives maximum / minimum point to surface distance, as well as the mean average error of the reconstruction as output per default. These can be changed by modifying `error_estimation.py`.
 
 
 ## Contributing
