@@ -1,3 +1,6 @@
+import os
+import sys
+sys.path.append(r"PATH/TO/CD")
 import tkinter as tk
 from tkinter import filedialog
 from threading import Thread
@@ -5,8 +8,6 @@ from crop_geometry import crop_geometry
 from surface_fitting import surface_fitting
 from voxel_downsampling import voxel_downsampling
 from error_estimation import error_estimation
-
-import os
 
 class PointCloudProcessingApp:
     def __init__(self, root):

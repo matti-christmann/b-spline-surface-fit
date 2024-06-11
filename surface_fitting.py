@@ -37,6 +37,8 @@ def surface_fitting(input_file_name: str="input.ply", \
 
     """
     # insert path here that goes to the installation of FreeCAD
+    import os
+    import sys
     FREECADPATH = r"C:\\Users\\christm2\\AppData\\Local\\Programs\\FreeCAD 0.21\\bin"
     FREECADLIBPATH = r"C:\\Users\\christm2\\AppData\\Local\\Programs\\FreeCAD 0.21\\lib"
     sys.path.append(FREECADPATH)
@@ -51,9 +53,8 @@ def surface_fitting(input_file_name: str="input.ply", \
         import Mesh
         import Part
         import Sketcher
-        import os
     except:
-        print("Modules not found.")
+        print("FreeCAD modules not found.")
 
     # Creating new FreeCad document
     doc = FreeCAD.newDocument()

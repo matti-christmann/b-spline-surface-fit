@@ -1,6 +1,11 @@
-import open3d as o3d
-import numpy as np
-import os
+try:
+    import open3d as o3d
+    import numpy as np
+    import os
+except ModuleNotFoundError:
+    print("Error: Modules not found. Please check dependencies.")
+    exit()
+
 
 def filter_points(point_cloud, x_range, y_range):
 
