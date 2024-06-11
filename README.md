@@ -6,7 +6,6 @@ This Python project is the output of my masters thesis and work done as a reasea
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 - [Contact Information](#contact-information)
 
@@ -49,9 +48,11 @@ The package can be used either by running `ui2_app.py` which gives an GUI for th
 3. **Perform reconstruction and error analysis:**
    The reconstructed surface will be saved as `.step` format in the specified output folder. The application also gives maximum / minimum point to surface distance, as well as the mean average error of the reconstruction as output per default. These can be changed by modifying `error_estimation.py`.
 
-
-## Contributing
-
 ## License
-
+An academic use licence is provided in the code base. If you use this software in your academic work, please cite the following:
+```sh
+Matti Christmann. B-spline surface fitting. [2024]. Available at: https://github.com/matti-christmann/b-spline-surface-fit
+```
 ## Contact Information
+Matti Christmann \
+matti.christmann@aalto.fi
