@@ -162,13 +162,7 @@ class PointCloudProcessingApp:
                                     nbvpoles, iterations, color_plot, \
                                     x_max, x_min, y_max, y_min):
         
-        # Crop geometry and get cropped_points_output_folder
-        # here we take the provided input path of the pc and load it!
-        # we crop the provided point cloud and have a cropped pc as output
-        # we should save the cropped point cloud and that is the one that should be
-        # downsmapled
-        # maybe we can do the loading of the point clouds also in the function,that
-        # way there are no mistakes and user does not have to worry about PC format
+        # Crop geometry
         print(output_folder) 
         crop_geometry(point_cloud_input_path = input_path, \
                          cropped_point_cloud_output_file_path = output_folder, \
