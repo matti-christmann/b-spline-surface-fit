@@ -10,7 +10,7 @@ This Python project is the output of my masters thesis and work done as a reasea
 - [Contact Information](#contact-information)
 
 ## Installation
-The scripts can be used in two ways; either as standalone scripts, where the raw functions are provided or as an application to enable easy usability.
+The scripts can be used in two ways; either as standalone scripts, where the raw functions are provided or as an application to enable easy usability. Please make sure, that the environment is setup in Python 3.8.
 ### Dependencies
 Dependency check is implemented in the beginning of each script, with the option to install during execution. Alternatively, these libraries can be easily installed through `pip install`.
 * [open3D](https://www.open3d.org/): Library for 3D data processing. Used for voxel downsampling and visualization in this project.
