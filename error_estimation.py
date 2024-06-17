@@ -1,3 +1,9 @@
+try:
+    import pymeshlab as ml
+except ModuleNotFoundError:
+    print("Error: Modules not found. Please check dependencies.")
+    exit()
+
 def error_estimation(reconstructed_surface_path: str="examples", \
                      point_cloud_path: str="examples", \
                      error_plot: bool = False):
@@ -17,9 +23,6 @@ def error_estimation(reconstructed_surface_path: str="examples", \
     Created by: Matti Christmann
 
     """
-
-    # importing meshlab
-    import pymeshlab as ml
 
     # Creating meshset
     mesh = ml.MeshSet()

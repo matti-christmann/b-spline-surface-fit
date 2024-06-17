@@ -6,7 +6,6 @@ except ModuleNotFoundError:
     print("Error: Modules not found. Please check dependencies.")
     exit()
 
-
 def filter_points(point_cloud, x_range, y_range):
 
     """
@@ -71,7 +70,7 @@ def crop_geometry(point_cloud_input_path: str = "example", \
     print("Cornfirm through pressing: 'Q'")
     o3d.visualization.draw_geometries([line_set, pcd])
 
-    # filtering the input file, to only include points from the previously defined range
+    # Filtering the input file, to only include points from the previously defined range
     filtered_points = filter_points(pcd, [min_x, max_x], [min_y, max_y])
 
     # Save the cropped point cloud

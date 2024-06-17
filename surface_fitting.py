@@ -1,3 +1,30 @@
+try:
+    import sys
+    import os
+except ModuleNotFoundError:
+    print("Error: Modules not found. Please check dependencies.")
+    exit()
+
+# Insert path to the installation of FreeCAD
+local_file_path = r"C:\Program Files\FreeCAD 0.21"
+FREECADPATH = local_file_path + "\\bin"
+FREECADLIBPATH = local_file_path + "\\lib"
+print(FREECADPATH, FREECADLIBPATH)
+sys.path.append(FREECADPATH)
+sys.path.append(FREECADLIBPATH)
+
+try:
+    import FreeCAD
+    import Points
+    import ReverseEngineering
+    import Mesh
+    import Part
+    import sketcher
+except:
+    print("FreeCAD modules not found. Please check FreeCAD installation.\n \
+          Please note: Modules might not be show as imported correctly, \
+          however work properly.")
+
 def surface_fitting(input_file_name: str="input.ply", \
                     output_path: str = "example", \
                     save_file_name: str = "approximated_surface",\
@@ -36,38 +63,19 @@ def surface_fitting(input_file_name: str="input.ply", \
     so that the module can be found with the import statement.
 
     """
-    # insert path here that goes to the installation of FreeCAD
-    import os
-    import sys
-    FREECADPATH = r"C:\\Users\\christm2\\AppData\\Local\\Programs\\FreeCAD 0.21\\bin"
-    FREECADLIBPATH = r"C:\\Users\\christm2\\AppData\\Local\\Programs\\FreeCAD 0.21\\lib"
-    sys.path.append(FREECADPATH)
-    sys.path.append(FREECADLIBPATH)
     
-    # trying import of FreeCAD modules
-    import FreeCAD
-    try:
-        import FreeCAD
-        import Points
-        import ReverseEngineering
-        import Mesh
-        import Part
-        import Sketcher
-    except:
-        print("FreeCAD modules not found.")
-
     # Creating new FreeCad document
     doc = FreeCAD.newDocument()
 
-    # inserting the point cloud
+    # Inserting the point cloud
     Points.insert(input_file_name,"approximation")
     current_document = FreeCAD.getDocument("approximation")
 
-    # getting the name of the input file
+    # Getting the name of the input file
     file_name_without_extension = os.path.splitext(os.path.basename(input_file_name))[0]
     
     # FreeCAD function call to do the approximation
-    # this can take some time depending on the chosen values
+    # This can take some time depending on the chosen values
     added_object = f"Spline{UDegree}{NbUPoles}{iterations}"
     current_document.addObject("Part::Spline", added_object).Shape =\
         ReverseEngineering.approxSurface(Points = getattr(current_document.getObject(f"{file_name_without_extension}"),\
@@ -76,7 +84,7 @@ def surface_fitting(input_file_name: str="input.ply", \
                                             Weight=0.1, Grad=1, Bend=0, Curv=0, Iterations=iterations, PatchFactor=1.05,\
                                             Correction=True).toShape()
 
-    # recomuting current document
+    # Recomputing current document
     FreeCAD.ActiveDocument.recompute()
 
     """
@@ -84,7 +92,7 @@ def surface_fitting(input_file_name: str="input.ply", \
     cloud, the fitted surface is increased with a scaled factor. Afterwards the 
     obtained surface is cut down within the region of interest. The process takes
     inspiration from the following tutorial:
-     https://forum.freecad.org/viewtopic.php?style=10&t=63949
+    https://forum.freecad.org/viewtopic.php?style=10&t=63949
     
     """
     # Selecting point cloud and the approximated surface
@@ -135,7 +143,7 @@ def surface_fitting(input_file_name: str="input.ply", \
     FreeCAD.ActiveDocument.recompute()
     FreeCAD.getDocument('approximation').recompute()
    
-    # selecting the approximating surface (untrimmed) and the boundary objects
+    # Selecting the approximating surface (untrimmed) and the boundary objects
     flat_curves = []
     selected_objects = None
     selected_objects = [current_document.getObject('Sketch'), \
@@ -183,7 +191,7 @@ def surface_fitting(input_file_name: str="input.ply", \
         Mesh.export(__objs__, f"{output_path}\\{save_file_name}.stl")
     del __objs__
 
-    # defining function to clear whole FreeCAD document
+    # Defining function to clear whole FreeCAD document
     def clearAll():
         doc = FreeCAD.ActiveDocument
         if doc:
