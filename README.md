@@ -1,6 +1,6 @@
 # b-spline-surface-fit
 Application for the fitting of B-spline surfaces to point clouds.
-This Python project is the output of my masters thesis and work done as a reasearch assistant in the Marine and Arctic Technology research team. The motivation was to provide an easy and accesible programm to characterize distortion shapes of welded thin-deck ship panels to enable further investigations on their strength capabilities. The thesis can be accessed [here](https://libguides.aalto.fi/c.php?g=653791&p=5137711). 
+This Python project is the output of my work done as a reasearch assistant in the Marine and Arctic Technology research team. The motivation was to provide an easy and accesible programm to characterize distortion shapes of welded thin-deck ship panels to enable further investigations on their strength capabilities.
 
 ## Table of Contents
 
@@ -55,4 +55,4 @@ Matti Christmann. B-spline surface fitting. [2024]. Available at: https://github
 ```
 ## Contact Information
 Matti Christmann \
-matti.christmann@aalto.fi
+matti.christmann@uni-weimar.de
