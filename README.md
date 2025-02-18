@@ -10,12 +10,12 @@ This Python project is the output of my work done as a reasearch assistant in th
 - [Contact Information](#contact-information)
 
 ## Installation
-The scripts can be used in two ways; either as standalone scripts, where the raw functions are provided or as an application to enable easy usability. Please make sure, that the environment is setup in Python 3.8.
+The scripts can be used in two ways; either as standalone scripts, where the raw functions are provided or as an application to enable easy usability. Please make sure, that the environment is setup in Python 3.8. The required versions for the packages have been specified below.
 ### Dependencies
 Dependency check is implemented in the beginning of each script, with the option to install during execution. Alternatively, these libraries can be easily installed through `pip install`.
-* [open3D](https://www.open3d.org/): Library for 3D data processing. Used for voxel downsampling and visualization in this project.
+* [open3D](https://www.open3d.org/): Open3D (v.0.19.0) is a library for 3D data processing. Used for voxel downsampling and visualization in this project.
 * [numpy](https://numpy.org/): Fundamental package for scientific computing in Python.
-* [pyMeshLab](https://github.com/cnr-isti-vclab/meshlab): pyMeshLab is a Python library that enables users to write scripts using the various functions available in Meshlab.
+* [pyMeshLab](https://github.com/cnr-isti-vclab/meshlab): pyMeshLab (v.2023.12.post1) is a Python library that enables users to write scripts using the various functions available in Meshlab.
 
 Furthermore, the installation of [FreeCAD v0.21](https://www.freecad.org/) on the local machine is required. The local installation path needs to be added to the script `surface_fitting.py` in the following line. Replace USER with the user on the local machine.
 ```python
