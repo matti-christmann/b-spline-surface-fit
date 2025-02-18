@@ -36,7 +36,7 @@ The package can be used either by running `ui2_app.py` which gives an GUI for th
 2. **Follow the GUI instructions:**
    Starting point for the reconstruction is a planar type point cloud in `.ply` format.
    Load `.ply` file.
-   Set up parameters for the surface reconstruction process. Parameters are strongly case dependant, recommendations for plate fields (based on investigations done in the thesis) are:
+   Set up parameters for the surface reconstruction process. Parameters are strongly case dependant, recommendations for plate fields (based on investigations) are:
    ```sh
     voxel size = 2
     UDegree = 3
