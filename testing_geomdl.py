@@ -40,32 +40,49 @@ def read_csv_as_tuples(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         reader = csv.reader(file)
         return [tuple(map(float, row)) for row in reader]
+    
+def read_pc_from_ply(file_path):  
+    # Read pc from .ply file, store in numpy array and convert to tuple
+      # Change this to your actual file path
+    pcd = o3d.io.read_point_cloud(file_path)
+    points = np.asarray(pcd.points)
+    print("LENGTH OF POINTS " + str(len(points)))
+    point_tuples = [tuple(point) for point in points]
+
+    return point_tuples
 
 generate_point_cloud_csv("point_cloud.csv", num_points_u=10,num_points_v=10)
 print("Point cloud CSV generated successfully.")
 
-file_path = 'examples\cropped_P1_original_data.ply'  # Change this to your actual file path
-#points = read_csv_as_tuples(file_path)
+
+file_path = "point_cloud.csv"
+points = read_csv_as_tuples(file_path)
+
+
+
 # Load PLY file
+file_path = 'cropped_P1_original_data.ply'
+
+# Loading the point cloud
 pcd = o3d.io.read_point_cloud(file_path)
 
-# Convert to NumPy array and store as a list of tuples
-points = np.asarray(pcd.points)
-print("LENGTH OF POINTS " + str(len(points)))
+# Perform voxel grid downsampling with Open3D
+downsampled_pcd = pcd.voxel_down_sample(5)
+points = np.asarray(downsampled_pcd.points)
 point_tuples = [tuple(point) for point in points]
 
-
-size_u = 10
-size_v = 10
+print("LENGTH OF POINTS: " + str(len(points)))
+size_u = 10  # Adjust according to your needs
+size_v = len(points) // size_u
 degree_u = 2
 degree_v = 2
+ctrlpts_size_u = 5
+ctrlpts_size_v = 5
 
-ctrlpts_size_u = 8
-ctrlpts_size_v = 8
 
-
-surf = fitting.approximate_surface(points, size_u, size_v, degree_u, degree_v,\
-                                   ctrlpts_size_u, ctrlpts_size_v, centripetal = False)
+surf = fitting.approximate_surface(point_tuples, size_u, size_v, degree_u, degree_v,\
+                                   ctrlpts_size_u = ctrlpts_size_u, ctrlpts_size_v = ctrlpts_size_v,
+                                   centripetal = False)
 
 surf_curves = construct.extract_curves(surf)
 plot_extras = [ # adding extras to the surface plot
@@ -85,11 +102,11 @@ geomdl.exchange.export_obj(surf, filename)
 # # Visualize data and evaluated points together
 import numpy as np
 import matplotlib.pyplot as plt
-evalpts = np.array(surf.evalpts)
+evalpts = np.array(surf.ctrlpts)
 pts = np.array(points)
 fig = plt.figure()
 ax = plt.axes(projection='3d')
-ax.scatter(evalpts[:, 0], evalpts[:, 1], evalpts[:, 2])
+ax.scatter(evalpts[:, 0], evalpts[:, 1], evalpts[:, 2], color = "green")
 ax.scatter(pts[:, 0], pts[:, 1], pts[:, 2], color="red")
 plt.show()
 
