@@ -55,21 +55,17 @@ print("LENGTH OF POINTS " + str(len(points)))
 point_tuples = [tuple(point) for point in points]
 
 
-size_u = 2
-size_v = 2
-degree_u = 2
-degree_v = 2
-
 size_u = 10
 size_v = 10
 degree_u = 2
 degree_v = 2
 
-# Do global curve approximation
-#surf = fitting.approximate_surface(points, size_u, size_v, degree_u, degree_v)
+ctrlpts_size_u = 8
+ctrlpts_size_v = 8
+
 
 surf = fitting.approximate_surface(points, size_u, size_v, degree_u, degree_v,\
-                                   ctrlpts_size_u = 8, ctrlpts_size_v = 8, centripetal = False)
+                                   ctrlpts_size_u, ctrlpts_size_v, centripetal = False)
 
 surf_curves = construct.extract_curves(surf)
 plot_extras = [ # adding extras to the surface plot
