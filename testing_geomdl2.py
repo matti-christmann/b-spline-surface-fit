@@ -36,14 +36,16 @@ plot_extras = [
         points=surf_curves['u'][0].evalpts,
         name="u",
         color="cyan",
-        size=5
+        size=15
     ),
     dict(
         points=surf_curves['v'][0].evalpts,
         name="v",
         color="magenta",
-        size=5
-    )
+        size=15
+    ),
+    dict(points=points, name="input points", color="red", size=15),
+    dict(points = [[-5,-5,0],[5,5,0]], name = "Input Points", color = "red", size = 15)
 ]
 
 # Plot the interpolated surface
@@ -60,4 +62,4 @@ fig = plt.figure()
 ax = plt.axes(projection='3d')
 ax.scatter(evalpts[:, 0], evalpts[:, 1], evalpts[:, 2])
 ax.scatter(pts[:, 0], pts[:, 1], pts[:, 2], color="red")
-plt.show()
+#plt.show()

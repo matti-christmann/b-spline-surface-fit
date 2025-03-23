@@ -1,5 +1,6 @@
 
 import csv
+import open3d as o3d
 import geomdl
 import geomdl.fitting
 from geomdl import exchange
@@ -15,7 +16,7 @@ import random
 import math
 import numpy as np
 
-def generate_point_cloud_csv(file_path, num_points_u=10, num_points_v=10):
+def generate_point_cloud_csv(file_path, num_points_u = 50, num_points_v = 50):
     """
     Generates a CSV file with 3D points forming a regular grid surface.
     
@@ -40,42 +41,50 @@ def read_csv_as_tuples(file_path):
         reader = csv.reader(file)
         return [tuple(map(float, row)) for row in reader]
 
-generate_point_cloud_csv("point_cloud.csv", num_points_u=20,num_points_v=20)
+generate_point_cloud_csv("point_cloud.csv", num_points_u=10,num_points_v=10)
 print("Point cloud CSV generated successfully.")
 
-file_path = 'point_cloud.csv'  # Change this to your actual file path
-points = read_csv_as_tuples(file_path)
+file_path = 'examples\cropped_P1_original_data.ply'  # Change this to your actual file path
+#points = read_csv_as_tuples(file_path)
+# Load PLY file
+pcd = o3d.io.read_point_cloud(file_path)
+
+# Convert to NumPy array and store as a list of tuples
+points = np.asarray(pcd.points)
+print("LENGTH OF POINTS " + str(len(points)))
+point_tuples = [tuple(point) for point in points]
+
 
 size_u = 2
 size_v = 2
 degree_u = 2
 degree_v = 2
 
+size_u = 10
+size_v = 10
+degree_u = 2
+degree_v = 2
+
 # Do global curve approximation
 #surf = fitting.approximate_surface(points, size_u, size_v, degree_u, degree_v)
 
-surf = fitting.approximate_surface(points, size_u, size_v, degree_u, degree_v, ctrlpts_size_u=5, ctrlpts_size_v=5)
+surf = fitting.approximate_surface(points, size_u, size_v, degree_u, degree_v,\
+                                   ctrlpts_size_u = 8, ctrlpts_size_v = 8, centripetal = False)
 
 surf_curves = construct.extract_curves(surf)
-plot_extras = [
-    dict(
-        points=surf_curves['u'][0].evalpts,
-        name="u",
-        color="cyan",
-        size=5
-    ),
-    dict(
-        points=surf_curves['v'][0].evalpts,
-        name="v",
-        color="magenta",
-        size=5
-    )
+plot_extras = [ # adding extras to the surface plot
+    dict(points=surf_curves['u'][0].evalpts, name="u", color="cyan", size=5),
+    dict(points=surf_curves['v'][0].evalpts, name="v", color="magenta", size=5),
+    dict(points=points, name="input points", color="red", size=8)  # Add input points
 ]
 
 # Plot the interpolated curve
-surf.delta = 0.05
+surf.delta = 0.08
 surf.vis = VisVTK.VisSurface()
 surf.render(extras = plot_extras)
+
+filename = "fitted_surface.stl"
+geomdl.exchange.export_obj(surf, filename)
 
 # # Visualize data and evaluated points together
 import numpy as np

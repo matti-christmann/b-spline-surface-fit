@@ -163,7 +163,6 @@ class PointCloudProcessingApp:
                                     x_max, x_min, y_max, y_min):
         
         # Crop geometry 
-        print(output_folder) 
         crop_geometry(point_cloud_input_path = input_path, \
                          cropped_point_cloud_output_file_path = output_folder, \
                          min_x = x_min, max_x = x_max, \
